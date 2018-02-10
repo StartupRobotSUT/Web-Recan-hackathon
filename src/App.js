@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Login from './User/Login'
+import Routes from './Routes/routes.js'
 class App extends Component {
   render() {
     return (
       <div className="App">
-          <h1>khad Can</h1>
-          <Login/>
+          <h1>RECAN</h1>
+          <Routes/>
       </div>
     );
   }
