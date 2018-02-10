@@ -30,7 +30,7 @@ logOut(){
 }
 	render(){
 		return(
-      <div className="display container">
+      <div className="display">
          <nav className="navbar is-light is-transparent">
            <div className="navbar-menu ">
   				<div className="navbar-start">
