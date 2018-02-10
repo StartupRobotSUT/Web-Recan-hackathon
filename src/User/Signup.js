@@ -1,13 +1,16 @@
 import React from 'react'
 import  {authEmail}from '../firebase/userconfig'
 import  { ref } from '../firebase/config'
+import {Redirect} from 'react-router-dom'
+import Bar from '../child/bar.js'
 class SignUp extends React.Component{
       constructor(props){
 		super(props)
         this.state={
         	email:"",
         	password:"",
-        	fullName:""
+        	fullName:"",
+        	done:false
         }
       }
  haadleInputChange(event){
@@ -37,37 +40,48 @@ class SignUp extends React.Component{
      authEmail(email,password).then(res=>{
      	    ref.child(`users/${res.uid}`).set(pass)
      	    ref.child(`coupop/${pass}`).set({value:0})
+     }).then(()=>{
+        this.setState({done:true})
      })
  }
 	 render(){
-	 	return(
-	 		<div>
-	 			<h3>Welcome!!  SignUp</h3>
-	 			<p>
-	 				<input 	type="text" 
+	 	let From =(
+	 		<div className="App2">
+  			<h3 className="title is-3">RECAN SignUp</h3>
+	 			<p className= "field">
+	 				<input 	
+	 						className="input is-success"
+	 				  		type="text" 
 	 				   		name="fullName"
  							value={this.state.fullName}
  							placeholder="Enter full Name"
  							onChange={this.haadleInputChange.bind(this)}
 	 				   		/>
 	 			</p>
-	 			<p>
-	 				<input 	type="email" 
+	 			<p className="field">
+	 				<input 	className="input is-success"
+	 						type="email" 
 	 				   		name="email"
  							value={this.state.email}
  							placeholder="Enter email"
  							onChange={this.haadleInputChange.bind(this)}
 	 				   		/>
 	 			</p>
-	 			<p>
-	 				<input 	type="password" 
+	 			<p className="field">
+	 				<input 	className="input is-success"
+	 						type="password" 
 	 						name="password"
 	 						placeholder="Enter password"
  							value={this.state.password}
  							onChange={this.haadleInputChange.bind(this)}
 	 						/>
 	 			</p>
-	 			<p><button onClick={this.handleClick.bind(this)}>Log In</button></p>
+	 			<p><a  className="button is-primary"  onClick={this.handleClick.bind(this)}>Sign Up</a></p>
+	 			</div>
+	 		)
+	 	return(
+	 		<div>
+	 			{this.state.done?<Redirect to={'/user/profile'}/>:From}
 	 		</div>
 	 		) 
 	 		
