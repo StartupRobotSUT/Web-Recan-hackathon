@@ -4,7 +4,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <h1>RECAN..</h1>
+          <h1>RECAN</h1>
           <Routes/>
       </div>
     );
