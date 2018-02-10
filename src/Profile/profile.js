@@ -2,11 +2,17 @@ import React from 'react'
 import firebase from 'firebase'
 import {signOut} from '../firebase/userconfig'
 import {ref} from '../firebase/config'
+import {Route,Link,Switch} from 'react-router-dom'
+import Bgn from '../img/bg.jpg'
+import ChangeCoin from './ChangeCoin'
+import  Display from './Display'
+
 class Profile extends React.Component{
 constructor(props){
 	super(props)
 	this.state={
-	   value:0
+	   value:0,
+	   done:false
 	}
 }
 componentDidMount() {
@@ -28,46 +34,51 @@ logOut(){
 	     this.props.history.push('/')
 	})
 }
+Display(){
+	this.setState({done:true})
+}
 	render(){
 		return(
-      <div className="display">
-         <nav className="navbar is-light is-transparent">
-           <div className="navbar-menu ">
-  				<div className="navbar-start">
-  				<p class="navbar-item">
-     				 <h1  className="fas fa-recycle title is-3">&nbsp;&nbsp;RECAN</h1>
-     		    </p>
-  				</div>
-
- 		 		<div className="navbar-end">
- 		 		    <p class="navbar-item">
-                         <p className=" btn button is-danger" onClick={this.logOut.bind(this)}><b>Log Out</b></p>
-                    </p>
- 	    	    </div>
-		</div>
-             </nav>
-             <br/>
-             <section class="hero is-primary">
-  <div className="hero-body">
-    <div className="container">
-      <h1 className="foo far fa-star">
-        &nbsp;&nbsp;<b>Total Points : {this.state.value}</b> 
-      </h1>
-    </div>
-  </div>
-</section>
-<br/>
-<section className="hero is-dark">
-<div className="hero-body">
-    <div className="container">
-      <h1 className="title far fa-star">
-           &nbsp;&nbsp;ads
-      </h1>
-    </div>
-  </div>
-</section>
+            
+            <div className='container bar-go'>
+                <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+                    <div className="navbar-start">
+                        <div className="navbar-item">
+                            <div className="field is-grouped">
+                                <p className="control">
+                                    <p className="title is-4 fab fa-pagelines">&nbsp;RECAN</p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="navbar-end">
+                     <div className="navbar-item">
+                            <div className="field is-grouped">
+                                <p className="control">
+                                    <a className="button is-info is-outlined app" style={{color:"black"}}><Link to={'/user/profile/display'}>Display</Link></a>
+                                </p>
+                            </div>
+                        </div>
+                         <div className="navbar-item">
+                            <div className="field is-grouped">
+                                <p className="control">
+                                    <a className="button is-info is-outlined app" style={{color:"black"}} ><Link to={'/user/profile/changeCoin'}>เเลกเปลียน</Link></a>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="navbar-item">
+                            <div className="field is-grouped">
+                                <p className="control">
+                                    <a className="button is-danger is-info is-outlined app" onClick={this.logOut.bind(this)}>Logout</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+            </nav>		
+                <Route  path={'/user/profile/'} component={BG}/>
          </div>
 	  )
   }
 }
 export default Profile
+const BG = ()=> <img src={Bgn} className="img"/>
