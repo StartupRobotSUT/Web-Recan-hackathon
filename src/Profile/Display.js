@@ -46,8 +46,8 @@ export default class Display extends React.Component {
             <section className="hero is-dark">
   				<div className="hero-body">
     				<div className="container">
-      					<h1 className="title">
-        					Total Points : 
+      					<h1 className="far fa-star title">
+        					&nbsp;Total Points : 
       					</h1>
       	    		</div>
   				</div>
@@ -56,8 +56,8 @@ export default class Display extends React.Component {
             <section className="hero is-success">
   				<div className="hero-body">
     				<div className="container">
-      					<h1 className="title">
-        					Status : 
+      					<h1 className="fab fa-bitcoin title">
+        					&nbsp;Status : 
       					</h1>
       	    		</div>
   				</div>
