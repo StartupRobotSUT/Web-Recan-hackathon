@@ -4,7 +4,10 @@ export default class ChangeCoin extends React.Component {
 	constructor(props) {
 		super(props);
 	}
+ EntertoChange(){
+   console.log("Enter")
 
+ }
 	render() {
 		return (
 			<div className='container bar-go'>
@@ -43,11 +46,12 @@ export default class ChangeCoin extends React.Component {
                     </div>
             </nav>
             <br/>
+             <h1 className="title is-4">เปลียน points เป็นเงิน</h1>
              <section className="hero is-info">
   				<div className="hero-body">
     				<div className="container">
-      					<h1 className="title">
-        					Total Points : 
+      					<h1 className="far fa-star title">
+        					&nbsp;Total Points : 
       					</h1>
       	    		</div>
   				</div>
@@ -56,12 +60,18 @@ export default class ChangeCoin extends React.Component {
             <section className="hero is-success">
   				<div className="hero-body">
     				<div className="container">
-      					<h1 className="title">
-        					Coin : 
+      					<h1 className="fab fa-bitcoin title">
+        					&nbsp;Coin : 
       					</h1>
       	    		</div>
   				</div>
-			</section>	
+			</section>
+			   <br/>
+			   <p style={{textAlign:'center'}}>	
+			   <p className="field" >
+			      <a className="button is-danger" onClick={this.EntertoChange.bind(this)}>Enter to Change</a>
+			    </p>
+			   </p>
                         </div>
 
 		);

@@ -18,18 +18,7 @@ class Routes extends React.Component{
 					<Route exact path={'/user/profile/display'} component={Display}/>
 					<Route exact path={'/user/profile/changeCoin'} component={ChangeCoin}/>
 				</Switch>
-				<br/><br/>
-				<br/>
-				<br/><br/>
-				<br/>
-				<footer className="footer">
-  					<div className="container">
-    				<div className="content has-text-centered">
-      		            <h1><b>RECAN</b> SUT HACKATHON #3</h1>
-        			
-    			</div>
-  			</div>
-			</footer>
+				
 			</div>
 		)
 	}
