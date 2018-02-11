@@ -39,7 +39,7 @@ export default class ChangeCoin extends React.Component {
 	render() {
 		return (
 			<div className='container bar-go'>
-                <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+                <div className="navbar is-primary" role="navigation" aria-label="main navigation">
                     <div className="navbar-start">
                         <div className="navbar-item">
                             <div className="field is-grouped">
@@ -72,14 +72,14 @@ export default class ChangeCoin extends React.Component {
                             </div>
                         </div>
                     </div>
-            </nav>
+            </div>
             <br/>
              <h1 className="title is-4">เปลียน points เป็นเงิน</h1>
              <section className="hero is-info">
   				<div className="hero-body">
     				<div className="container">
       					<h1 className="far fa-star title">
-        					&nbsp;Total Points : {this.state.coupon}
+        					&nbsp;Coupon : {this.state.coupon}
       					</h1>
       	    		</div>
   				</div>

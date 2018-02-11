@@ -2,7 +2,7 @@ import React from 'react'
 import  {authEmail}from '../firebase/userconfig'
 import  { ref } from '../firebase/config'
 import {Redirect} from 'react-router-dom'
-import Bar from '../child/bar.js'
+// import Bar from '../child/bar.js's
 class SignUp extends React.Component{
       constructor(props){
 		super(props)

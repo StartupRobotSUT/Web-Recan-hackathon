@@ -18,9 +18,9 @@ componentDidMount() {
          ref.child(`users/${user.uid}`).on('value',res=>{
           this.setState({uid:res.val()})
           ref.child(`/coupon/${res.val()}`).on('value',res=>{
-            let coin = res.val().coin;
+            // let coin = res.val().coin;
             // console.log(coin)
-            than.setState({value:res.val().coin})
+            than.setState({value:res.val().coupon})
           })
          })
   } else { 
@@ -35,7 +35,7 @@ componentDidMount() {
 	render() {
 		return (
 			<div className='container bar-go'>
-                <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+                <div className="navbar is-primary" role="navigation" aria-label="main navigation">
                     <div className="navbar-start">
                         <div className="navbar-item">
                             <div className="field is-grouped">
@@ -68,13 +68,13 @@ componentDidMount() {
                             </div>
                         </div>
                     </div>
-            </nav>
+            </div>
             <br/>
             <section className="hero is-dark">
   				<div className="hero-body">
     				<div className="container">
       					<h1 className="far fa-star title">
-        					&nbsp;Total Points : {this.state.value}
+        					&nbsp;Coupon: {this.state.value}
       					</h1>
       	    		</div>
   				</div>

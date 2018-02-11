@@ -2,10 +2,9 @@ import React from 'react'
 import firebase from 'firebase'
 import {signOut} from '../firebase/userconfig'
 import {ref} from '../firebase/config'
-import {Route,Link,Switch} from 'react-router-dom'
+import {Route,Link} from 'react-router-dom'
 import Bgn from '../img/bg.jpg'
-import ChangeCoin from './ChangeCoin'
-import  Display from './Display'
+
 
 class Profile extends React.Component{
 constructor(props){
@@ -36,12 +35,12 @@ logOut(){
 	})
 }
 Display(){
-	 this.setState({done:true})
+	   this.setState({done:true})
 }
 	render(){
 		return(
             <div className='container bar-go'>
-                <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+                <div className="navbar is-primary" role="navigation" aria-label="main navigation">
                     <div className="navbar-start">
                         <div className="navbar-item">
                             <div className="field is-grouped">
@@ -74,11 +73,11 @@ Display(){
                             </div>
                         </div>
                     </div>
-            </nav>		
+            </div>		
                 <Route  path={'/user/profile/'} component={BG}/>
          </div>
 	  )
   }
 }
 export default Profile
-const BG = ()=> <img src={Bgn} className="img"/>
+const BG = ()=> <div src={Bgn} className="img"/>
