@@ -20,9 +20,10 @@ componentDidMount() {
     let than = this
 	if (user) {
          ref.child(`users/${user.uid}`).on('value',res=>{
-         	ref.child(`/coupop/${res.val()}/value`).on('value',res=>{
-         		console.log(res.val())
-         		than.setState({value:res.val()})
+             // console.log(res)
+         	ref.child(`/coupon/${res.val()}`).on('value',res=>{
+         		console.log(res.val().coin)
+         		than.setState({value:res.val().coin})
          	})
          })
 	} else { 
@@ -35,11 +36,10 @@ logOut(){
 	})
 }
 Display(){
-	this.setState({done:true})
+	 this.setState({done:true})
 }
 	render(){
 		return(
-            
             <div className='container bar-go'>
                 <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
                     <div className="navbar-start">

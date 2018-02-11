@@ -18,7 +18,6 @@ class Routes extends React.Component{
 					<Route exact path={'/user/profile/display'} component={Display}/>
 					<Route exact path={'/user/profile/changeCoin'} component={ChangeCoin}/>
 				</Switch>
-				
 			</div>
 		)
 	}

@@ -1,13 +1,41 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import {signOut} from '../firebase/userconfig'
+import firebase from 'firebase'
+import {ref} from '../firebase/config'
 export default class ChangeCoin extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state={
+			coin:0,
+			coupon:0,
+		}
 	}
  EntertoChange(){
    console.log("Enter")
 
  }
+ componentDidMount() {
+    let user = firebase.auth().currentUser;
+    let than = this
+  if (user) {
+         ref.child(`users/${user.uid}`).on('value',res=>{
+          ref.child(`/coupon/${res.val()}`).on('value',res=>{
+            // let coin = res.val().coin;
+            console.log(res.val())
+            than.setState({coin:res.val().coin,
+                           coupon:res.val().coupon})
+          })
+         })
+  } else { 
+          console.log(user)
+   }
+ }
+ logOut(){
+  signOut().then(res=>{
+       this.props.history.push('/')
+  })
+}
 	render() {
 		return (
 			<div className='container bar-go'>
@@ -39,7 +67,7 @@ export default class ChangeCoin extends React.Component {
                         <div className="navbar-item">
                             <div className="field is-grouped">
                                 <p className="control">
-                                    <a className="button is-danger is-info is-outlined app" >Logout</a>
+                                    <a className="button is-danger is-info is-outlined app" onClick={this.logOut.bind(this)} >Logout</a>
                                 </p>
                             </div>
                         </div>
@@ -51,7 +79,7 @@ export default class ChangeCoin extends React.Component {
   				<div className="hero-body">
     				<div className="container">
       					<h1 className="far fa-star title">
-        					&nbsp;Total Points : 
+        					&nbsp;Total Points : {this.state.coupon}
       					</h1>
       	    		</div>
   				</div>
@@ -61,7 +89,7 @@ export default class ChangeCoin extends React.Component {
   				<div className="hero-body">
     				<div className="container">
       					<h1 className="fab fa-bitcoin title">
-        					&nbsp;Coin : 
+        					&nbsp;Coin : {this.state.coin}
       					</h1>
       	    		</div>
   				</div>
