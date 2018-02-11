@@ -1,14 +1,41 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import firebase from 'firebase'
+import {ref} from '../firebase/config'
+import {signOut} from '../firebase/userconfig'
 export default class Display extends React.Component {
 	constructor(props) {
 		super(props);
+    this.state={
+      value:0,
+      uid:''
+    }
 	}
-
+componentDidMount() {
+    let user = firebase.auth().currentUser;
+    let than = this
+  if (user) {
+         ref.child(`users/${user.uid}`).on('value',res=>{
+          this.setState({uid:res.val()})
+          ref.child(`/coupon/${res.val()}`).on('value',res=>{
+            // let coin = res.val().coin;
+            // console.log(coin)
+            than.setState({value:res.val().coupon})
+          })
+         })
+  } else { 
+          console.log(user)
+   }
+ }
+ logOut(){
+  signOut().then(res=>{
+       this.props.history.push('/')
+  })
+}
 	render() {
 		return (
 			<div className='container bar-go'>
-                <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+                <div className="navbar is-primary" role="navigation" aria-label="main navigation">
                     <div className="navbar-start">
                         <div className="navbar-item">
                             <div className="field is-grouped">
@@ -36,32 +63,33 @@ export default class Display extends React.Component {
                         <div className="navbar-item">
                             <div className="field is-grouped">
                                 <p className="control">
-                                    <a className="button is-danger is-info is-outlined app" >Logout</a>
+                                    <a className="button is-danger is-info is-outlined app" onClick={this.logOut.bind(this)} >Logout</a>
                                 </p>
                             </div>
                         </div>
                     </div>
-            </nav>
+            </div>
             <br/>
             <section className="hero is-dark">
   				<div className="hero-body">
     				<div className="container">
       					<h1 className="far fa-star title">
-        					&nbsp;Total Points : 
+        					&nbsp;Coupon: {this.state.value}
       					</h1>
       	    		</div>
   				</div>
 			</section>	
-			<br/>
-            <section className="hero is-success">
-  				<div className="hero-body">
-    				<div className="container">
-      					<h1 className="fab fa-bitcoin title">
-        					&nbsp;Status : 
-      					</h1>
-      	    		</div>
-  				</div>
-			</section>		
+      <br/>
+      <section className="hero is-dark">
+          <div className="hero-body">
+            <div className="container">
+                <h1 className="far fa-star title">
+                  &nbsp;UID: {this.state.uid}
+                </h1>
+                </div>
+          </div>
+      </section>  
+			<br/>	
 
                         </div>
 		);

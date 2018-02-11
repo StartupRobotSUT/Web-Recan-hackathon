@@ -2,7 +2,7 @@ import React from 'react'
 import  {authEmail}from '../firebase/userconfig'
 import  { ref } from '../firebase/config'
 import {Redirect} from 'react-router-dom'
-import Bar from '../child/bar.js'
+// import Bar from '../child/bar.js's
 class SignUp extends React.Component{
       constructor(props){
 		super(props)
@@ -24,22 +24,22 @@ class SignUp extends React.Component{
  }
  generatePassword() {
     var length = 4,
-        charset = "abcdefghijklmnopqrstuvwxyz0123456789",
+        charset = "abcd0123456789",
         retVal = "";
     for (var i = 0, n = charset.length; i < length; ++i) {
         retVal += charset.charAt(Math.floor(Math.random() * n));
     }
     return retVal;
 }
- // componentDidMount() {
- //    console.log(this.generatePassword())
- //  }
  handleClick(){
      let { email,password} =this.state  
      let pass = this.generatePassword()
      authEmail(email,password).then(res=>{
      	    ref.child(`users/${res.uid}`).set(pass)
-     	    ref.child(`coupop/${pass}`).set({value:0})
+     	    ref.child(`coupon/${pass}`).set({ coin:0,
+     	                                      status:1,
+                                              coupon:0
+     	                                      })
      }).then(()=>{
         this.setState({done:true})
      })
