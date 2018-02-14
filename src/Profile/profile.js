@@ -27,7 +27,7 @@ componentDidMount() {
          	})
          })
 	} else { 
-	        console.log(user)
+	       this.props.history.push('/')
    }
  }
 logOut(){
