@@ -1,12 +1,12 @@
 
 import firebase from 'firebase'
 var config = {
-    apiKey: "AIzaSyCleFQEUA9ONrep1f8nsxv2GofSh9ribxA",
-    authDomain: "hackathon-8f517.firebaseapp.com",
-    databaseURL: "https://hackathon-8f517.firebaseio.com",
-    projectId: "hackathon-8f517",
-    storageBucket: "hackathon-8f517.appspot.com",
-    messagingSenderId: "374588479521"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
 
   };
   export const app = firebase.initializeApp(config)
